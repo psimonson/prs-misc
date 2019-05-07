@@ -16,7 +16,7 @@ RDEPEND="${DEPEND}"
 
 GITHUB_REPO="modplay"
 GITHUB_USER="psimonson"
-GITHUB_TAG="ebff7f87f4afac565d340ab4f4ccf33919711165"
+GITHUB_TAG="273400b8a17b18d67c1aa573ba2992550f1ae510"
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/tarball/${GITHUB_TAG} -> ${PN}-${GITHUB_TAG}.tar.gz"
 
 src_unpack() {
