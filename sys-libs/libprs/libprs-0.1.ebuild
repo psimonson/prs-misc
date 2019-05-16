@@ -16,7 +16,7 @@ RDEPEND="${DEPEND}"
 
 GITHUB_REPO="libprs"
 GITHUB_USER="psimonson"
-GITHUB_TAG="e7068885b7b5ca89e08b32e7e8bfc7830adc3ace"
+GITHUB_TAG="b9b1dfd0c2841845de8f695d39f53048ed40c64e"
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/tarball/${GITHUB_TAG} -> ${PN}-${GITHUB_TAG}.tar.gz"
 
 src_unpack() {
@@ -29,8 +29,9 @@ src_compile() {
 }
 
 src_install() {
-	addwrite "${EPREFIX}/usr/local/lib"
 	addwrite "${EPREFIX}/usr/local/lib64"
+	addwrite "${EPREFIX}/usr/local/include"
 	make install
+	ldconfig
 }
 
