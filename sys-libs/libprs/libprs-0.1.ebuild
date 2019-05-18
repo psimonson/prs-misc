@@ -28,7 +28,7 @@ src_unpack() {
 
 autotools-multilib_src_configure() {
 	autoreconf -vfi
-	./configure --prefix=/usr/local
+	./configure --prefix=/usr
 }
 
 autotools-multilib_src_compile() {
