@@ -1,7 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=5
+
+inherit autotools-multilib
 
 DESCRIPTION="PRS library - Simple file and logger library version 0.1"
 HOMEPAGE="https://github.com/psimonson/libprs"
@@ -9,14 +11,14 @@ HOMEPAGE="https://github.com/psimonson/libprs"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="x86 amd64"
-IUSE="32 64"
+IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
 GITHUB_REPO="libprs"
 GITHUB_USER="psimonson"
-GITHUB_TAG="10f561b9ec93dafc7f6d997f35163353d1f7f6b2"
+GITHUB_TAG="f8b9fcee665f9079f581d38a6e7e56b4bd4eb7e4"
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/tarball/${GITHUB_TAG} -> ${PN}-${GITHUB_TAG}.tar.gz"
 
 src_unpack() {
@@ -24,14 +26,17 @@ src_unpack() {
 	mv "${WORKDIR}/${GITHUB_USER}-${GITHUB_REPO}"-??????? "${S}" || die
 }
 
-src_compile() {
-	make all
+autotools-multilib_src_configure() {
+	autoreconf -vfi
+	./configure --prefix=/usr/local
 }
 
-src_install() {
-	addwrite "${EPREFIX}/usr/local/lib"
-	addwrite "${EPREFIX}/usr/local/lib64"
-	addwrite "${EPREFIX}/usr/local/include"
-	make install
+autotools-multilib_src_compile() {
+	make
+}
+
+autotools-multilib_src_install() {
+	make DESTDIR="${D}" install
+	rm -f "${D}"/usr/lib*/*.so
 }
 
