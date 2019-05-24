@@ -18,7 +18,7 @@ RDEPEND="${DEPEND}"
 
 GITHUB_REPO="libprs"
 GITHUB_USER="psimonson"
-GITHUB_TAG="58d59c7194383221bf956f6fa56338b63dcec6f7"
+GITHUB_TAG="43a5cf8448d71863b663fb59f21fc1ea85dd2e83"
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/tarball/${GITHUB_TAG} -> ${PN}-${GITHUB_TAG}.tar.gz"
 
 src_unpack() {
